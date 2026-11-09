@@ -1,0 +1,575 @@
+*{
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    box-sizing: border-box;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+.nav{
+    background-color: black;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+nav img{
+    width: 300px;
+    padding-left: 50px;
+}
+
+form{
+    display: flex;
+}
+
+form button{
+    margin-top: 60px;
+    margin-bottom: 60px;
+    width:70px;
+    border: 0;
+    border-radius: 5px;
+    transition: 0.10s;
+}
+
+form button:hover{
+    background-color: #724101;
+    color: #fff;
+    transform: scale(1.1);
+}
+
+.buscar{
+    margin-top: 60px;
+    margin-bottom: 60px;
+    margin-right: 10px;
+    width: 450px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    border-radius: 5px;
+}
+
+.list{
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 60px;
+    font-size: 20px;
+    color: #ffffff;
+}
+
+.list li{
+    border-right: 1px solid #fff;
+}
+
+.list a{
+    text-decoration: none;
+    color: #ffffff;
+    padding: 20px;
+    transition: 0.9s;
+}
+
+.list a:hover{
+    color: #a10000;
+    transform: scale(1.1);
+}
+
+.main{
+background-color: #b3580e;
+width: 100%;
+height: 950px;
+background-image: url(img/Hamburguer\ 2.0.png);
+background-repeat: no-repeat;
+}
+
+.card{
+    width: 647px;
+    height: 950px;
+    padding: 30px;
+    border-left: 5px solid black;
+    border-radius: 4px;
+    padding-top: 500px;
+    margin-left: 1250px;
+    text-align: center;
+    background-color: #b3580e;
+}
+
+.card h1{
+    font-size: 50px;
+    font-family: "Bungee", sans-serif;
+    color: #ffffff;
+}
+
+.card h1:hover{
+    color: #a10000;
+} 
+
+.card h2{
+    color: #000000;
+    padding-top: 10px;
+    font-family: "Limelight", sans-serif;
+}
+
+.card button {
+    padding: 20px;
+    margin-top: 20px;
+    width: 140px;
+    border: 0;
+    border-radius: 10px;
+    transition: 0.5s;
+    background-color: #a10000;
+}
+
+
+.card button a{
+    text-decoration: none;
+    font-size: 20px;
+    color: #ffffff;
+    font-family: "Sancreek", serif;
+}
+
+.card button:hover{
+    background-color: #000000;
+    transform: scale(1.2);
+}
+
+.promo{
+    background-color: #5c0000;
+    color: #fff;
+}
+.promo h1{
+    color: #ffcea5;
+    text-align: center;
+    padding: 50px;
+    font-family: "Kranky", serif;
+    font-size: 50px;
+}
+
+.promo div{
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+    padding-bottom: 40px;
+    padding-top: 30px;
+}
+
+.promo div img{
+    width: 250px;
+}
+
+.promo div p{
+    text-decoration: line-through;
+}
+
+.promo div button{
+    font-size: 20px;
+    width: 70px;
+    font-family: "Spicy Rice", serif;
+    background-color: #000000;
+    border: 0;
+    margin-top: 2px;
+}
+
+.promo div button a{
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.bunny{
+    text-align: center;
+    transition: 0.5s;
+}
+
+.bunny:hover{
+    background: #d19964;
+    border: 1px #d19964 solid;
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+.bunny p{
+    padding-top: 5px;
+    padding-bottom: 2px;
+}
+
+.cat{
+    text-align: center;
+    transition: 0.5s;
+}
+
+.cat:hover{
+    background: #d19964;
+    border: 1px #d19964 solid;
+    transform: scale(1.1);
+    opacity: 1.0;
+}
+
+.cat p{
+    padding-top: 5px;
+    padding-bottom: 2px;
+}
+
+.bat{
+    text-align: center;
+    transition: 0.5s;
+}
+
+.bat:hover{
+    background: #d19964;
+    border: 1px #d19964 solid;
+    transform: scale(1.1);
+    opacity: 1.0;
+}
+
+.bat p{
+    padding-top: 5px;
+    padding-bottom: 2px;
+}
+
+.Maomao{
+    text-align: center;
+    transition: 0.5s;
+}
+
+.Maomao:hover{
+    background: #d19964;
+    border: 1px #d19964 solid;
+    transform: scale(1.1);
+    opacity: 1.0;  
+}
+
+.Maomao p{
+    padding-top: 5px;
+    padding-bottom: 2px;
+}
+
+.Jinshi{
+    text-align: center;
+    transition: 0.5s;
+}
+
+.Jinshi:hover{
+    background: #d19964;
+    border: 1px #d19964 solid;
+    transform: scale(1.1);
+    opacity: 1.0;
+}
+
+.Jinshi p{
+    padding-top: 5px;
+    padding-bottom: 2px;
+}
+
+.Lishu{
+    text-align: center;
+    transition: 0.5s;
+}
+
+.Lishu:hover{
+    background: #d19964;
+    border: 1px #d19964 solid;
+    transform: scale(1.1);
+    opacity: 1.0;
+}
+
+.Lishu p{
+    padding-top: 5px;
+    padding-bottom: 2px;
+}
+
+.batata{
+    background-color: #8b582e;
+    color: #000000;
+}
+
+
+.batata h1{
+    color: #810000;
+    text-align: center;
+    padding: 50px;
+    font-family: "Kranky", serif;
+    font-size: 50px;
+}
+
+.batata div{
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+    padding-bottom: 40px;
+    padding-top: 30px;
+    text-align: center;
+}
+
+.batata div img{
+    width: 250px;
+}
+
+
+.batata div button{
+    font-size: 20px;
+    width: 70px;
+    font-family: "Spicy Rice", serif;
+    background-color: #ffffff;
+    border: 0;
+    margin-top: 2px;
+}
+
+.batata div button a{
+    text-decoration: none;
+    color: #750000;
+}
+
+.shu{
+    text-align: center;
+    transition: 0.5s;
+}
+
+.shu:hover{
+    background: #ffa5a5;
+    border: 1px #fca5a5 solid;
+    transform: scale(1.2);
+    opacity: 1.0;
+}
+
+.valt{
+    text-align: center;
+    transition: 0.5s;
+}
+
+.valt:hover{
+    background: #ffa5a5;
+    border: 1px #ffa5a5 solid;
+    transform: scale(1.2);
+    opacity: 1.0;
+}
+
+.nika{
+    text-align: center;
+    transition: 0.5s;
+}
+
+.nika:hover{
+    background: #ffa5a5;
+    border: 1px #ffa5a5 solid;
+    transform: scale(1.2);
+    opacity: 1.0;
+}
+
+.toko{
+    text-align: center;
+    transition: 0.5s;
+}
+
+.toko:hover{
+    background: #ffa5a5;
+    border: 1px #ffa5a5 solid;
+    transform: scale(1.2);
+    opacity: 1.0;
+}
+
+.lui{
+    text-align: center;
+    transition: 0.5s;
+}
+
+.lui:hover{
+    background: #ffa5a5;
+    border: 1px #ffa5a5 solid;
+    transform: scale(1.2);
+    opacity: 1.0;
+}
+
+.free{
+    text-align: center;
+    transition: 0.5s;
+}
+
+.free:hover{
+    background: #ffa5a5;
+    border: 1px #ffa5a5 solid;
+    transform: scale(1.2);
+    opacity: 1.0;
+}
+
+.zac{
+    text-align: center;
+    transition: 0.5s;
+}
+
+.zac:hover{
+    background: #ffa5a5;
+    border: 1px #ffa5a5 solid;
+    transform: scale(1.2);
+    opacity: 1.0;
+}
+
+.xander{
+    text-align: center;
+    transition: 0.5s;
+}
+
+.xander:hover{
+    background: #ffa5a5;
+    border: 1px #ffa5a5 solid;
+    transform: scale(1.2);
+    opacity: 1.0;
+}
+
+.daigo{
+    text-align: center;
+    transition: 0.5s;
+}
+
+.daigo:hover{
+    background: #ffa5a5;
+    border: 1px #ffa5a5 solid;
+    transform: scale(1.2);
+    opacity: 1.0;
+}
+
+.ken{
+    text-align: center;
+    transition: 0.5s;
+}
+
+.ken:hover{
+    background: #ffa5a5;
+    border: 1px #ffa5a5 solid;
+    transform: scale(1.2);
+    opacity: 1.0;
+}
+
+.joshua{
+    text-align: center;
+    transition: 0.5s;
+}
+
+.joshua:hover{
+    background: #ffa5a5;
+    border: 1px #ffa5a5 solid;
+    transform: scale(1.2);
+    opacity: 1.0;
+}
+
+.honey{
+    text-align: center;
+    transition: 0.5s;
+}
+
+.honey:hover{
+    background: #ffa5a5;
+    border: 1px #ffa5a5 solid;
+    transform: scale(1.2);
+    opacity: 1.0;
+}
+
+.kris{
+    text-align: center;
+    transition: 0.5s;
+}
+
+.kris:hover{
+    background: #ffa5a5;
+    border: 1px #ffa5a5 solid;
+    transform: scale(1.2);
+    opacity: 1.0;
+}
+
+.rantaro{
+    text-align: center;
+    transition: 0.5s;
+}
+
+.rantaro:hover{
+    background: #ffa5a5;
+    border: 1px #ffa5a5 solid;
+    transform: scale(1.2);
+    opacity: 1.0;
+}
+
+.sayori{
+    text-align: center;
+    transition: 0.5s;
+}
+
+.sayori:hover{
+    background: #ffa5a5;
+    border: 1px #ffa5a5 solid;
+    transform: scale(1.2);
+    opacity: 1.0;
+}
+
+.yuri{
+    text-align: center;
+    transition: 0.5s;
+}
+
+.yuri:hover{
+    background: #ffa5a5;
+    border: 1px #ffa5a5 solid;
+    transform: scale(1.2);
+    opacity: 1.0;
+}
+
+body{
+    background-image: url(img/aaaaaaaaaA.jpg);
+    background-repeat: no-repeat;
+}
+
+.love{
+    margin: 100px;
+    margin-left: 800px;
+    margin-right: 800px;
+    padding: 30px;
+}
+.perfil {
+    text-align: center;
+}
+
+.perfil img {
+    width: 200px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    margin: auto;
+}
+
+.perfil label {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 15px;
+    background-color: #333;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#uploadFoto {
+    display: none;
+}
+
+.you{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding: 7px;
+    gap: 4px;
+    color: #fff;
+}
+
+.you button{
+    margin: 3px;
+    padding: 5px;
+    transition: 0;
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.you button:hover{
+    transform: 0;
+    color: #000000;
+    background-color: #ffffff;
+}

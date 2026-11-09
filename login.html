@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Anton+SC&family=Bungee&family=Chango&family=Climate+Crisis:YEAR@1979..2050&family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Edu+TAS+Beginner&family=Emilys+Candy&family=Fascinate+Inline&family=Kranky&family=Limelight&family=Sancreek&family=Shadows+Into+Light+Two&family=Spicy+Rice&family=Tapestry&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <header>
+        <nav  class="nav">
+
+            <img src="img/Logo.png" alt="Logo da Hamburgueria Sabor & Brasa">
+
+            <form action="/buscar" method="get">
+                <input type="search" id="pesquisa" class="buscar" name="q" placeholder=" 🔍︎  Pesquise no cardápio...">
+                <button type="submit">Buscar</button>
+            </form>
+
+            <ul class="list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#Promoções">Promoções</a></li>
+                        <li><a href="cardápio.html">Cardápio</a></li>
+                        <li><a href="#Delivery">Delivery</a></li>
+                        <li><a href="cadastro.html">Cadastrar</a></li>
+                        <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+        <main class="love">
+            <div class="perfil">
+                <img src="img/user.png" id="fotoPerfil">
+            
+                <label for="uploadFoto">Alterar foto</label>
+                <input type="file" id="uploadFoto" accept="image/*">
+            </div>
+
+            <form class="you">
+                <label for="user">User:</label>
+                <input type="text" name="user" placeholder="Digite o seu nome..." required>
+
+                <label for="senha">Senha:</label>
+                <input type="password" name="senha"placeholder="Digite sua senha..." required>
+
+                <button type="submit">Entrar</button>
+            </form>
+        </main>
+ 
+
+
+
+</body>
+</html>
