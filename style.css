@@ -513,23 +513,53 @@ background-repeat: no-repeat;
     opacity: 1.0;
 }
 
-body{
-    background-image: url(img/aaaaaaaaaA.jpg);
-    background-repeat: no-repeat;
+.love{
+    background-color: #773e3e;
+    width: 100%;
+    height: 783px;
+    padding: 200px;
 }
 
-.love{
+
+.you{
+    margin-left: 800px;
+    margin-right: 800px;
+    padding: 30px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding: 7px;
+    gap: 4px;
+    color: #ffffff;
+}
+
+.you button{
+    margin: 3px;
+    padding: 5px;
+    transition: 0;
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.you button:hover{
+    transform: 0;
+    color: #000000;
+    background-color: #ffffff;
+}
+
+.ivan{
     margin: 100px;
     margin-left: 800px;
     margin-right: 800px;
     padding: 30px;
 }
+
 .perfil {
     text-align: center;
 }
 
 .perfil img {
-    width: 200px;
+    width: 150px;
     height: 150px;
     border-radius: 50%;
     object-fit: cover;
@@ -551,25 +581,25 @@ body{
     display: none;
 }
 
-.you{
+.till{
     align-items: center;
     display: flex;
     flex-direction: column;
     padding: 7px;
     gap: 4px;
-    color: #fff;
+    color: #000000;
 }
 
-.you button{
+.till button{
     margin: 3px;
     padding: 5px;
     transition: 0;
-    background-color: #ffffff;
-    color: #000000;
+    background-color: #000000;
+    color: #ffffff;
 }
 
-.you button:hover{
+.till button:hover{
     transform: 0;
-    color: #000000;
-    background-color: #ffffff;
+    color: #ffffff;
+    background-color: #000000;
 }

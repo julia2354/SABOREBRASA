@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Cadastro</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -27,5 +27,34 @@
             </ul>
         </nav>
     </header>
+
+    <main class="ivan">
+
+
+        <form class="till" action="cadastrar.php" method="post">
+            <div class="perfil">
+                <img src="img/user.png" id="fotoPerfil">
+            
+                <label for="uploadFoto">Alterar foto</label>
+                <input type="file" id="uploadFoto" nome= "foto" accept="image/*">
+            </div>
+            
+            <label for="user">Nome:</label>
+            <input type="text" name="nome" placeholder="Digite o seu nome..." required>
+
+            <label for="email">E-mail:</label>
+            <input type="text" name="email"placeholder="Digite seu e-mail..." required>
+
+            <label for="telefone">Telefone:</label>
+            <input type="tel" name="telefone"placeholder="(00) 99999-9999" required>
+
+            <label for="senha">Senha:</label>
+            <input type="password" name="senha"placeholder="Digite sua senha..." required>
+
+            <button type="submit">Cadastrar</button>
+        </form>
+    </main>
+
+    <script src="script.js"></script>
 </body>
 </html>
