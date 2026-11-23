@@ -51,6 +51,25 @@ form button:hover{
     border-radius: 5px;
 }
 
+
+.buscar {
+    padding: 12px;
+    border: 2px solid #8B0000;
+    border-radius: 20px;
+    outline: none;
+}
+
+.buscar:focus {
+    border-color: #D2691E;
+}
+
+#mensagemPesquisa {
+    text-align: center;
+    color: #8B0000;
+    font-weight: bold;
+}
+
+
 .list{
     display: flex;
     align-items: center;
