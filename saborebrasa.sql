@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 23/11/2026 às 16:56
+-- Tempo de geração: 23/11/2026 às 17:39
 -- Versão do servidor: 8.3.0
 -- Versão do PHP: 8.2.18
 
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `cliente` (
   `senha` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `foto` varchar(255) NOT NULL,
   PRIMARY KEY (`id_cliente`)
-) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Despejando dados para a tabela `cliente`
@@ -58,7 +58,24 @@ INSERT INTO `cliente` (`id_cliente`, `nome`, `email`, `telefone`, `senha`, `foto
 (14, 'Júlia', 'paocombata@gmail.com', '31 982557229', '$2y$10$OHa.ajxhcuKHkSvDhx9Ki.5LU1y3WRIQ5iRxy.PS7iAFJYFb.amGi', ''),
 (15, 'Júlia', 'paocombata@gmail.com', '31 982557229', '$2y$10$E08RwWIB.osFoYK2JqJ1OekVf18KAouESHBAFnMX8y2hGoiEU6CV6', ''),
 (16, 'Júlia', 'paocombata@gmail.com', '31 982557229', '$2y$10$HLdfzShq2v4nX5n8Y1/UW.c.c3HdUsdXUw9xqJCE1MhmUs4mzP5mO', ''),
-(17, 'Júlia', 'paocombata@gmail.com', '31 982557229', '$2y$10$DSsWV4hRY.awhciiQWEZYuxUtlCO8j.qG8qOs4JUC/.yAIO63VTvu', '');
+(17, 'Júlia', 'paocombata@gmail.com', '31 982557229', '$2y$10$DSsWV4hRY.awhciiQWEZYuxUtlCO8j.qG8qOs4JUC/.yAIO63VTvu', ''),
+(18, 'aaaaa', 'paocombata@gmail.com', '31 982557229', '$2y$10$fVrwwiNTydh5qYhcjBT1r.Dgmsjglh2Zi7JTadnmNZgqy0gpppESq', ''),
+(19, 'aaaaa', 'paocombata@gmail.com', '31 982557229', '$2y$10$PJOGSo5fwBbZ9RnYsI9zmeNy6hKX0EE2q.5zAwMnwrKwgC4aqyPzG', ''),
+(20, 'aaaaa', 'paocombata@gmail.com', '31 982557229', '$2y$10$o0CBlmd8XJG9FejpKjbrB.kVqvyb94kzbgmJnGCd5JZ9UL0sXZlcq', '');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `produtos`
+--
+
+DROP TABLE IF EXISTS `produtos`;
+CREATE TABLE IF NOT EXISTS `produtos` (
+  `id_produto` int NOT NULL AUTO_INCREMENT,
+  `nome` int NOT NULL,
+  `preco` decimal(6,2) NOT NULL,
+  PRIMARY KEY (`id_produto`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
