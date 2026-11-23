@@ -1,9 +1,8 @@
 
+
 <?php
 session_start();
-echo "Caminho da foto: " . $_SESSION['foto'];
 
-// CONEXÃO COM O BANCO
 $servidor = "localhost";
 $usuario = "root";
 $senha_bd = "";
@@ -15,13 +14,22 @@ if (!$conexao) {
     die("Erro de conexão: " . mysqli_connect_error());
 }
 
-// RECEBER OS DADOS
-$nome = $_POST['nome'];
-$email = $_POST['email'];
-$telefone = $_POST['telefone'];
-$senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
+mysqli_set_charset($conexao, "utf8mb4");
 
-// FOTO DE PERFIL
+// Receber dados do formulário
+$nome = $_POST['nome'] ?? '';
+$email = $_POST['email'] ?? '';
+$telefone = $_POST['telefone'] ?? '';
+$senha = $_POST['senha'] ?? '';
+
+if (empty($nome) || empty($email) || empty($telefone) || empty($senha)) {
+    die("Preencha todos os campos obrigatórios.");
+}
+
+// Criptografar a senha apenas uma vez
+$senhaCriptografada = password_hash($senha, PASSWORD_DEFAULT);
+
+// Foto do usuário
 $foto = "";
 
 if (isset($_FILES['foto']) && $_FILES['foto']['error'] === UPLOAD_ERR_OK) {
@@ -32,31 +40,36 @@ if (isset($_FILES['foto']) && $_FILES['foto']['error'] === UPLOAD_ERR_OK) {
         die("O arquivo enviado não é uma imagem.");
     }
 
-    $pasta = "uploads/";
-
-    if (!is_dir($pasta)) {
-        mkdir($pasta, 0755, true);
-    }
-
     $extensao = strtolower(pathinfo($_FILES['foto']['name'], PATHINFO_EXTENSION));
 
     if (!in_array($extensao, ['jpg', 'jpeg', 'png', 'webp'])) {
         die("Formato de imagem inválido.");
     }
 
-    $nomeFoto = uniqid() . "." . $extensao;
-    $foto = $pasta . $nomeFoto;
+    $pasta = __DIR__ . "/uploads/";
 
-    if (!move_uploaded_file($arquivo, $foto)) {
+    if (!is_dir($pasta)) {
+        mkdir($pasta, 0755, true);
+    }
+
+    $nomeFoto = uniqid() . "." . $extensao;
+
+    if (!move_uploaded_file($arquivo, $pasta . $nomeFoto)) {
         die("Erro ao enviar a foto.");
     }
+
+    $foto = "uploads/" . $nomeFoto;
 }
 
-// CADASTRAR NO BANCO
+// Inserir usuário no banco
 $sql = "INSERT INTO cliente (nome, email, telefone, senha, foto)
         VALUES (?, ?, ?, ?, ?)";
 
 $stmt = mysqli_prepare($conexao, $sql);
+
+if (!$stmt) {
+    die("Erro na preparação: " . mysqli_error($conexao));
+}
 
 mysqli_stmt_bind_param(
     $stmt,
@@ -64,20 +77,20 @@ mysqli_stmt_bind_param(
     $nome,
     $email,
     $telefone,
-    $senha,
+    $senhaCriptografada,
     $foto
 );
 
 if (mysqli_stmt_execute($stmt)) {
 
-    // GUARDAR DADOS NA SESSÃO
+    // Guardar informações na sessão
     $_SESSION['id_usuario'] = mysqli_insert_id($conexao);
     $_SESSION['nome'] = $nome;
     $_SESSION['email'] = $email;
     $_SESSION['telefone'] = $telefone;
     $_SESSION['foto'] = $foto;
 
-    // IR PARA A PÁGINA DO USUÁRIO
+    // Ir para a página do usuário
     header("Location: usuario.php");
     exit();
 

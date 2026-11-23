@@ -89,3 +89,165 @@ height: 783px;
     font-size: 40px;
     padding: 20px;
 }
+
+
+/* =================================
+   RESPONSIVIDADE - SABOR & BRASA
+   ================================= */
+
+/* TABLETS */
+@media screen and (max-width: 1024px) {
+
+    body {
+        overflow-x: hidden;
+    }
+
+    .container {
+        width: 90%;
+        max-width: 100%;
+    }
+
+    header {
+        padding: 15px 20px;
+    }
+
+    nav {
+        gap: 15px;
+    }
+
+    .banner {
+        height: auto;
+        min-height: 350px;
+    }
+
+    .produtos {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .produto {
+        width: 100%;
+    }
+
+    img {
+        max-width: 100%;
+    }
+}
+
+/* CELULARES */
+@media screen and (max-width: 768px) {
+
+    body {
+        overflow-x: hidden;
+        font-size: 14px;
+    }
+
+    header {
+        flex-direction: column;
+        align-items: center;
+        padding: 15px;
+    }
+
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    nav a {
+        font-size: 14px;
+    }
+
+    .container {
+        width: 95%;
+        padding: 10px;
+    }
+
+    .banner {
+        height: auto;
+        min-height: 250px;
+        padding: 25px 15px;
+        text-align: center;
+    }
+
+    .banner h1 {
+        font-size: 28px;
+    }
+
+    .banner p {
+        font-size: 14px;
+    }
+
+    .produtos {
+        grid-template-columns: 1fr;
+    }
+
+    .produto {
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .produto img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+        max-width: 100%;
+    }
+
+    form {
+        width: 100%;
+        padding: 15px;
+    }
+
+    table {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    footer {
+        text-align: center;
+        padding: 20px;
+    }
+}
+
+/* CELULARES PEQUENOS */
+@media screen and (max-width: 480px) {
+
+    .banner h1 {
+        font-size: 23px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    nav {
+        gap: 8px;
+    }
+
+    nav a {
+        font-size: 12px;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+    }
+
+    .produto {
+        padding: 12px;
+    }
+}

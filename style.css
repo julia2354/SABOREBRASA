@@ -286,7 +286,7 @@ background-repeat: no-repeat;
 
 
 .batata h1{
-    color: #810000;
+    color: #e7c7c7;
     text-align: center;
     padding: 50px;
     font-family: "Kranky", serif;
@@ -548,7 +548,6 @@ background-repeat: no-repeat;
 }
 
 .ivan{
-    border: 1px solid black;
     margin: 100px;
     margin-left: 800px;
     margin-right: 800px;
@@ -604,3 +603,4 @@ background-repeat: no-repeat;
     color: #ffffff;
     background-color: #000000;
 }
+

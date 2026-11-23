@@ -8,3 +8,14 @@ upload.addEventListener("change", function() {
         fotoPerfil.src = URL.createObjectURL(arquivo);
     }
 });
+
+document.getElementById("uploadFoto").addEventListener("change", function(event) {
+
+    const arquivo = event.target.files[0];
+
+    if (arquivo) {
+        document.getElementById("fotoPerfil").src =
+            URL.createObjectURL(arquivo);
+    }
+
+});
