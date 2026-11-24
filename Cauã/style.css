@@ -539,12 +539,12 @@ background-image: url(img/m.png);
 
 
 .you{
-    margin-left: 800px;
+    margin-left: 600px;
     margin-right: 800px;
     padding: 30px;
     align-items: center;
     display: flex;
-    flex-direction: column;
+    flex-direction:column;
     padding: 7px;
     gap: 4px;
     color: #ffffff;
