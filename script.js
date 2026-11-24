@@ -1,3 +1,11 @@
+const pesquisa = document.getElementById("pesquisa");
+
+if (pesquisa) {
+    pesquisa.addEventListener("input", function() {
+        // Mantenha aqui o código original da pesquisa.
+    });
+}
+
 const upload = document.getElementById("uploadFoto");
 const fotoPerfil = document.getElementById("fotoPerfil");
 
@@ -21,75 +29,82 @@ document.getElementById("uploadFoto").addEventListener("change", function(event)
 });
 
 
-document.addEventListener("DOMContentLoaded", function () {
 
-    const campoPesquisa = document.getElementById("pesquisa");
-    const cardapio = document.querySelector(".batata");
+const CHAVE_CARRINHO = "saborBrasaCarrinho";
 
-    if (!campoPesquisa || !cardapio) return;
+// Atualiza o carrinho salvo no navegador
+async function atualizarCarrinhoLocal() {
+    const resposta = await fetch("carrinho_api.php?acao=listar");
 
-    const produtos = cardapio.querySelectorAll("article");
-    const mensagem = document.getElementById("mensagemPesquisa");
-
-    function filtrarProdutos(valor) {
-
-        const pesquisa = valor
-            .toLowerCase()
-            .normalize("NFD")
-            .replace(/[\u0300-\u036f]/g, "")
-            .trim();
-
-        let encontrados = 0;
-
-        produtos.forEach(function (produto) {
-
-            const nome = produto.querySelector("h2").textContent;
-            const descricao = produto.querySelector("img").alt;
-
-            const texto = (nome + " " + descricao)
-                .toLowerCase()
-                .normalize("NFD")
-                .replace(/[\u0300-\u036f]/g, "");
-
-            if (texto.includes(pesquisa)) {
-                produto.style.display = "";
-                encontrados++;
-            } else {
-                produto.style.display = "none";
-            }
-
-        });
-
-        // Esconder linhas vazias
-        cardapio.querySelectorAll(":scope > div").forEach(function (linha) {
-
-            const visiveis = Array.from(
-                linha.querySelectorAll("article")
-            ).some(produto => produto.style.display !== "none");
-
-            linha.style.display = visiveis ? "" : "none";
-
-        });
-
-        if (mensagem) {
-            mensagem.textContent = pesquisa === ""
-                ? ""
-                : encontrados + " produto(s) encontrado(s)!";
-        }
+    if (!resposta.ok) {
+        throw new Error("Erro ao consultar o carrinho.");
     }
 
-    // Pesquisa enquanto digita
-    campoPesquisa.addEventListener("input", function () {
-        filtrarProdutos(this.value);
-    });
+    const dados = await resposta.json();
 
-    // Recupera a pesquisa enviada pelo formulário
-    const parametros = new URLSearchParams(window.location.search);
-    const buscaInicial = parametros.get("q") || "";
+    localStorage.setItem(
+        CHAVE_CARRINHO,
+        JSON.stringify(dados.produtos)
+    );
 
-    if (buscaInicial) {
-        campoPesquisa.value = buscaInicial;
-        filtrarProdutos(buscaInicial);
+    return dados;
+}
+
+// Adicionar produtos
+document.addEventListener("click", async function(event) {
+
+    const botao = event.target.closest(".adicionar-carrinho");
+
+    if (!botao) return;
+
+    // Localiza qualquer artigo com data-id
+    const artigo = botao.closest("article[data-id]");
+
+    if (!artigo) return;
+
+    const id = Number(artigo.dataset.id);
+
+    botao.disabled = true;
+
+    try {
+
+        const resposta = await fetch(
+            "carrinho_api.php?acao=adicionar",
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+                    id: id,
+                    quantidade: 1
+                })
+            }
+        );
+
+        const dados = await resposta.json();
+
+        if (!resposta.ok) {
+            throw new Error(dados.erro || "Não foi possível adicionar.");
+        }
+
+        localStorage.setItem(
+            CHAVE_CARRINHO,
+            JSON.stringify(dados.produtos)
+        );
+
+        alert("🍔 Produto adicionado ao carrinho!");
+
+    } catch (erro) {
+
+        alert(erro.message);
+
+    } finally {
+
+        botao.disabled = false;
+
     }
 
 });
