@@ -1,8 +1,6 @@
-
 * {
     margin: 0;
     padding: 0;
-    outline: 0;
     box-sizing: border-box;
 }
 
@@ -11,78 +9,118 @@ html {
 }
 
 body {
-    font-family: Arial, sans-serif;
     overflow-x: hidden;
+}
+
+/* Contorno visível só para quem navega pelo teclado */
+:focus-visible {
+    outline: 3px solid #D2691E;
+    outline-offset: 2px;
+}
+
+/* Texto que só leitores de tela "veem" (label da busca) */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
 }
 
 /* MENU */
 .nav {
     background-color: black;
     display: flex;
-    width: 100%;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 30px 0;
+}
+
+.nav > a {
+    display: block;
+    flex-shrink: 0;
 }
 
 .nav img {
+    display: block;
     width: 300px;
-    max-width: 100%;
     padding-left: 50px;
 }
 
 .nav form {
     display: flex;
     align-items: center;
+    gap: 10px;
+}
+
+.buscar {
+    width: 450px;
+    height: 45px;
+    padding: 12px;
+    border: 2px solid #8B0000;
+    border-radius: 20px;
+    outline: none;
+    font-size: 16px;
+}
+
+.buscar:focus {
+    border-color: #D2691E;
 }
 
 .nav form button {
-    margin: 0 15px 0 0;
     width: 70px;
     height: 45px;
     border: 0;
     border-radius: 5px;
     cursor: pointer;
-    transition: 0.2s;
+    transition: 0.1s;
 }
 
 .nav form button:hover {
     background-color: #724101;
-    color: white;
-    transform: scale(1.05);
+    color: #fff;
+    transform: scale(1.1);
 }
 
-.buscar {
-    margin: 0 10px;
-    width: 450px;
-    max-width: 100%;
-    height: 45px;
-    display: flex;
-    justify-content: center;
-    border-radius: 5px;
+#mensagemPesquisa {
+    text-align: center;
+    color: #8B0000;
+    font-weight: bold;
 }
 
 .list {
     display: flex;
     align-items: center;
     list-style: none;
-    padding: 30px;
+    padding: 0 40px;
     font-size: 20px;
-    color: white;
 }
 
 .list li {
-    border-right: 1px solid white;
+    border-right: 1px solid #fff;
+}
+
+.list li:last-child {
+    border-right: none;
 }
 
 .list a {
+    display: inline-block; /* sem isso o transform não funciona */
     text-decoration: none;
-    color: white;
-    padding: 15px;
+    color: #ffffff;
+    padding: 0 20px;
     transition: 0.3s;
 }
 
-.list a:hover {
+.list a:hover,
+.list a[aria-current="page"] {
     color: #a10000;
+}
+
+.list a:hover {
+    transform: scale(1.1);
 }
 
 /* ÁREA DO CARRINHO */
@@ -94,7 +132,7 @@ body {
 }
 
 .macarrao h1 {
-    font-family: 'Alfa Slab One', cursive;
+    font-family: 'Alfa Slab One', serif;
     color: white;
     font-size: 40px;
     margin-bottom: 35px;
@@ -107,6 +145,13 @@ body {
     gap: 20px;
     max-width: 900px;
     margin: auto;
+}
+
+/* Mensagens de "Carregando..." e de erro */
+#listaCarrinho > p {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
 }
 
 .produto-carrinho {
@@ -123,6 +168,7 @@ body {
 .produto-carrinho img {
     width: 140px;
     height: 120px;
+    flex-shrink: 0;
     object-fit: cover;
     border-radius: 10px;
 }
@@ -147,6 +193,12 @@ body {
     margin: 12px 0;
 }
 
+.quantidade span {
+    min-width: 24px;
+    text-align: center;
+    font-weight: bold;
+}
+
 .quantidade button {
     padding: 7px 15px;
     cursor: pointer;
@@ -154,6 +206,11 @@ body {
     color: white;
     border: none;
     border-radius: 5px;
+    font-size: 16px;
+}
+
+.quantidade button:hover {
+    background: #a10000;
 }
 
 .informacoes-produto button[data-acao="remover"] {
@@ -163,6 +220,10 @@ body {
     padding: 8px 15px;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.informacoes-produto button[data-acao="remover"]:hover {
+    background: #000;
 }
 
 /* RESUMO */
@@ -196,12 +257,56 @@ body {
     background: #8b0000;
     color: white;
     font-weight: bold;
+    font-size: 16px;
+    transition: 0.2s;
+}
+
+.resumo button:hover,
+.resumo a:hover {
+    background: #a10000;
+}
+
+.resumo #limparCarrinho {
+    background: #333;
+}
+
+.resumo #limparCarrinho:hover {
+    background: #000;
+}
+
+.resumo .finalizar {
+    background: #1e7d32;
+}
+
+.resumo .finalizar:hover {
+    background: #145c23;
+}
+
+/* Botões desativados (carrinho vazio ou requisição em andamento) */
+button:disabled,
+.resumo button:disabled,
+.resumo .finalizar.desabilitado {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.resumo button:disabled:hover {
+    background: #333;
+}
+
+.resumo .finalizar.desabilitado:hover {
+    background: #1e7d32;
 }
 
 .carrinho-vazio {
     background: white;
     padding: 35px;
     border-radius: 12px;
+}
+
+.carrinho-vazio h2 {
+    color: #8b0000;
+    margin-bottom: 10px;
 }
 
 .carrinho-vazio a {
@@ -214,15 +319,25 @@ body {
     border-radius: 7px;
 }
 
+.carrinho-vazio a:hover {
+    background: #a10000;
+}
+
 /* TABLETS */
 @media screen and (max-width: 1024px) {
+    .nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+
     .nav img {
         width: 220px;
-        padding-left: 20px;
+        padding-left: 0;
     }
 
     .list {
-        padding: 20px;
+        padding: 0 20px;
         font-size: 16px;
     }
 
@@ -236,28 +351,26 @@ body {
     .nav {
         flex-direction: column;
         padding: 15px;
+        gap: 15px;
     }
 
     .nav img {
-        padding: 0;
         width: 200px;
     }
 
     .nav form {
         width: 100%;
         justify-content: center;
-        margin: 15px 0;
     }
 
     .buscar {
         width: 70%;
-        margin: 0 8px;
     }
 
     .list {
         flex-wrap: wrap;
         justify-content: center;
-        padding: 10px;
+        padding: 0;
         font-size: 14px;
     }
 
@@ -281,6 +394,7 @@ body {
     .produto-carrinho img {
         width: 100%;
         max-width: 220px;
+        height: 160px;
     }
 
     .quantidade {
@@ -289,7 +403,9 @@ body {
 
     .resumo a,
     .resumo button {
+        display: block;
         width: 90%;
+        margin: 8px auto;
     }
 }
 
@@ -306,5 +422,12 @@ body {
     .resumo p {
         font-size: 18px;
     }
-}
 
+    .buscar {
+        width: 100%;
+    }
+
+    .nav form {
+        padding: 0 10px;
+    }
+}

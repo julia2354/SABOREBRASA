@@ -154,6 +154,7 @@ background-repeat: no-repeat;
     transform: scale(1.2);
 }
 
+
 .promo{
     background-color: #5c0000;
     color: #fff;
@@ -621,5 +622,332 @@ background-repeat: no-repeat;
     transform: 0;
     color: #ffffff;
     background-color: #000000;
+}
+
+/* =================================
+   RESPONSIVIDADE - TABLETS
+================================= */
+
+@media screen and (max-width: 1024px) {
+
+    /* MENU */
+
+    .nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 15px;
+        gap: 15px;
+    }
+
+    nav img {
+        width: 220px;
+        padding-left: 0;
+    }
+
+    .list {
+        padding: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+        font-size: 16px;
+    }
+
+    .list a {
+        padding: 10px;
+    }
+
+    form {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .buscar {
+        width: 70%;
+        margin: 10px;
+    }
+
+    form button {
+        margin: 10px;
+    }
+
+    /* PRINCIPAL */
+
+    .main {
+        height: auto;
+        min-height: 650px;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .card {
+        width: 50%;
+        height: auto;
+        min-height: 650px;
+        margin-left: auto;
+        padding: 250px 20px 40px;
+    }
+
+    .card h1 {
+        font-size: 38px;
+    }
+
+    /* PROMOÇÕES */
+
+    .promo div,
+    .batata div {
+        flex-wrap: wrap;
+        gap: 30px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .promo div img,
+    .batata div img {
+        max-width: 100%;
+        width: 220px;
+    }
+
+    /* LOGIN */
+
+    .love {
+        height: auto;
+        min-height: 600px;
+        padding: 100px 20px;
+    }
+
+    .you {
+        margin: 0 auto;
+        max-width: 500px;
+        width: 100%;
+    }
+
+    .ivan {
+        margin: 40px auto;
+        padding: 20px;
+        max-width: 500px;
+    }
+}
+
+
+/* RESPONSIVIDADE - CELULARES */
+
+@media screen and (max-width: 600px) {
+
+    /* MENU */
+
+    .nav {
+        flex-direction: column;
+        align-items: center;
+        padding: 15px;
+    }
+
+    nav img {
+        width: 180px;
+        padding: 0;
+    }
+
+    .list {
+        flex-direction: column;
+        padding: 10px;
+        gap: 15px;
+        font-size: 16px;
+    }
+
+    .list li {
+        border-right: none;
+        border-bottom: 1px solid #ffffff;
+        padding-bottom: 8px;
+    }
+
+    .list a {
+        padding: 8px;
+    }
+
+    /* PESQUISA */
+
+    form {
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .buscar {
+        width: 75%;
+        height: 40px;
+        margin: 10px 5px;
+    }
+
+    form button {
+        width: 60px;
+        height: 40px;
+        margin: 10px 5px;
+    }
+
+    /* PRINCIPAL */
+
+    .main {
+        width: 100%;
+        min-height: 550px;
+        height: auto;
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: flex-end;
+    }
+
+    .card {
+        width: 100%;
+        min-height: auto;
+        height: auto;
+        margin: 0;
+        padding: 30px 15px;
+        border-left: none;
+        border-top: 4px solid #000000;
+    }
+
+    .card h1 {
+        font-size: 30px;
+    }
+
+    .card h2 {
+        font-size: 18px;
+    }
+
+    .card button {
+        width: 130px;
+        padding: 12px;
+    }
+
+    /* PROMOÇÕES */
+
+    .promo h1,
+    .batata h1 {
+        font-size: 35px;
+        padding: 30px 10px;
+    }
+
+    .promo div,
+    .batata div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+        padding: 20px;
+    }
+
+    .promo div img,
+    .batata div img {
+        width: 220px;
+        max-width: 100%;
+    }
+
+    .promo div button,
+    .batata div button {
+        width: 80px;
+        padding: 5px;
+    }
+
+    /* CARDS DOS PRODUTOS */
+
+    .bunny,
+    .cat,
+    .bat,
+    .Maomao,
+    .Jinshi,
+    .Lishu,
+    .shu,
+    .valt,
+    .nika,
+    .toko,
+    .lui,
+    .free,
+    .zac,
+    .xander,
+    .daigo,
+    .ken,
+    .joshua,
+    .honey,
+    .kris,
+    .rantaro,
+    .sayori,
+    .yuri {
+        width: 100%;
+        max-width: 280px;
+    }
+
+    /* LOGIN E CADASTRO */
+
+    .love {
+        width: 100%;
+        min-height: 550px;
+        height: auto;
+        padding: 60px 15px;
+    }
+
+    .you {
+        width: 100%;
+        max-width: 350px;
+        margin: 0 auto;
+        padding: 15px;
+    }
+
+    .you input {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .ivan {
+        width: 100%;
+        max-width: 350px;
+        margin: 30px auto;
+        padding: 15px;
+    }
+
+    /* FOTO DE PERFIL */
+
+    .perfil img {
+        width: 120px;
+        height: 120px;
+    }
+
+    .perfil label {
+        font-size: 14px;
+    }
+
+    /* OUTROS */
+
+    .till {
+        width: 100%;
+        padding: 15px;
+    }
+
+}
+
+
+/* CELULARES PEQUENOS */
+
+@media screen and (max-width: 380px) {
+
+    nav img {
+        width: 150px;
+    }
+
+    .card h1 {
+        font-size: 25px;
+    }
+
+    .promo h1,
+    .batata h1 {
+        font-size: 28px;
+    }
+
+    .promo div img,
+    .batata div img {
+        width: 180px;
+    }
+
+    .buscar {
+        width: 70%;
+    }
+
 }
 
