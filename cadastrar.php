@@ -1,102 +1,121 @@
 
 <?php
 session_start();
+require_once "conexao.php";
 
-$servidor = "localhost";
-$usuario = "root";
-$senha_bd = "";
-$banco = "saborebrasa";
-
-$conexao = mysqli_connect($servidor, $usuario, $senha_bd, $banco);
-
-if (!$conexao) {
-    die("Erro de conexão: " . mysqli_connect_error());
+if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+    header("Location: cadastro.html");
+    exit;
 }
 
-mysqli_set_charset($conexao, "utf8mb4");
+$nome = trim($_POST["nome"] ?? "");
+$email = trim($_POST["email"] ?? "");
+$telefone = trim($_POST["telefone"] ?? "");
+$senha = $_POST["senha"] ?? "";
 
-// Receber dados do formulário
-$nome = $_POST['nome'] ?? '';
-$email = $_POST['email'] ?? '';
-$telefone = $_POST['telefone'] ?? '';
-$senha = $_POST['senha'] ?? '';
-
-if (empty($nome) || empty($email) || empty($telefone) || empty($senha)) {
-    die("Preencha todos os campos obrigatórios.");
+if (
+    $nome === "" ||
+    !filter_var($email, FILTER_VALIDATE_EMAIL) ||
+    strlen($senha) < 6
+) {
+    die("Preencha os dados corretamente. A senha deve ter pelo menos 6 caracteres.");
 }
 
-// Criptografar a senha apenas uma vez
-$senhaCriptografada = password_hash($senha, PASSWORD_DEFAULT);
+// Verifica se o e-mail já está cadastrado
+$stmt = $conexao->prepare(
+    "SELECT id_cliente FROM cliente WHERE email = ?"
+);
 
-// Foto do usuário
-$foto = "";
+$stmt->bind_param("s", $email);
+$stmt->execute();
 
-if (isset($_FILES['foto']) && $_FILES['foto']['error'] === UPLOAD_ERR_OK) {
+$resultado = $stmt->get_result();
 
-    $arquivo = $_FILES['foto']['tmp_name'];
+if ($resultado->num_rows > 0) {
+    die("Este e-mail já está cadastrado.");
+}
 
-    if (getimagesize($arquivo) === false) {
-        die("O arquivo enviado não é uma imagem.");
+$stmt->close();
+
+// Foto padrão
+$foto = "img/usuario/perfil-padrao.png";
+
+// Verifica se o cliente enviou uma foto
+if (isset($_FILES["foto"]) && $_FILES["foto"]["error"] !== UPLOAD_ERR_NO_FILE) {
+
+    if ($_FILES["foto"]["error"] !== UPLOAD_ERR_OK) {
+        die("Não foi possível enviar a foto.");
     }
 
-    $extensao = strtolower(pathinfo($_FILES['foto']['name'], PATHINFO_EXTENSION));
-
-    if (!in_array($extensao, ['jpg', 'jpeg', 'png', 'webp'])) {
-        die("Formato de imagem inválido.");
+    if ($_FILES["foto"]["size"] > 3 * 1024 * 1024) {
+        die("A foto deve ter no máximo 3 MB.");
     }
 
-    $pasta = __DIR__ . "/uploads/";
+    $tipo = mime_content_type($_FILES["foto"]["tmp_name"]);
+
+    $tiposPermitidos = [
+        "image/jpeg" => "jpg",
+        "image/png" => "png",
+        "image/webp" => "webp"
+    ];
+
+    if (!isset($tiposPermitidos[$tipo])) {
+        die("Envie uma imagem JPG, PNG ou WEBP.");
+    }
+
+    $pasta = "uploads/";
 
     if (!is_dir($pasta)) {
         mkdir($pasta, 0755, true);
     }
 
-    $nomeFoto = uniqid() . "." . $extensao;
+    $extensao = $tiposPermitidos[$tipo];
 
-    if (!move_uploaded_file($arquivo, $pasta . $nomeFoto)) {
-        die("Erro ao enviar a foto.");
+    $nomeFoto = bin2hex(random_bytes(16)) . "." . $extensao;
+
+    $destino = $pasta . $nomeFoto;
+
+    if (!move_uploaded_file($_FILES["foto"]["tmp_name"], $destino)) {
+        die("Erro ao salvar a foto.");
     }
 
-    $foto = "uploads/" . $nomeFoto;
+    $foto = $destino;
 }
 
-// Inserir usuário no banco
-$sql = "INSERT INTO cliente (nome, email, telefone, senha, foto)
-        VALUES (?, ?, ?, ?, ?)";
+// Protege a senha
+$senhaHash = password_hash($senha, PASSWORD_DEFAULT);
 
-$stmt = mysqli_prepare($conexao, $sql);
+// Cadastra o cliente
+$stmt = $conexao->prepare(
+    "INSERT INTO cliente (nome, email, telefone, senha, foto)
+     VALUES (?, ?, ?, ?, ?)"
+);
 
-if (!$stmt) {
-    die("Erro na preparação: " . mysqli_error($conexao));
-}
-
-mysqli_stmt_bind_param(
-    $stmt,
+$stmt->bind_param(
     "sssss",
     $nome,
     $email,
     $telefone,
-    $senhaCriptografada,
+    $senhaHash,
     $foto
 );
 
-if (mysqli_stmt_execute($stmt)) {
+if ($stmt->execute()) {
 
-    // Guardar informações na sessão
-    $_SESSION['id_usuario'] = mysqli_insert_id($conexao);
-    $_SESSION['nome'] = $nome;
-    $_SESSION['email'] = $email;
-    $_SESSION['telefone'] = $telefone;
-    $_SESSION['foto'] = $foto;
+    session_regenerate_id(true);
 
-    // Ir para a página do usuário
+    $_SESSION["id_usuario"] = $conexao->insert_id;
+    $_SESSION["nome"] = $nome;
+    $_SESSION["email"] = $email;
+    $_SESSION["telefone"] = $telefone;
+    $_SESSION["foto"] = $foto;
+
     header("Location: usuario.php");
-    exit();
+    exit;
 
 } else {
-    echo "Erro ao cadastrar: " . mysqli_stmt_error($stmt);
+    die("Erro ao realizar cadastro.");
 }
 
-mysqli_stmt_close($stmt);
-mysqli_close($conexao);
+$stmt->close();
 ?>
