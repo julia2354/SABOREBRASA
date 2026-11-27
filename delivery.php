@@ -8,7 +8,7 @@
     <title>Finalizar pedido - Sabor & Brasa</title>
 
     <link rel="stylesheet" href="delivery.css">
-
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -30,7 +30,7 @@
                 type="search"
                 class="buscar"
                 name="q"
-                placeholder="🔍 Pesquise no cardápio..."
+                placeholder="🔍︎ Pesquise no cardápio..."
             >
 
             <button type="submit">Buscar</button>

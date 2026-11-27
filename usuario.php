@@ -22,6 +22,8 @@ $fotoExiste = !empty($foto) && is_file(__DIR__ . "/" . $foto);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minha conta - Sabor & Brasa</title>
     <link rel="stylesheet" href="usuario.css">
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Anton+SC&family=Bungee&family=Chango&family=Climate+Crisis:YEAR@1979..2050&family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Edu+TAS+Beginner&family=Emilys+Candy&family=Fascinate+Inline&family=Kranky&family=Limelight&family=Sancreek&family=Shadows+Into+Light+Two&family=Spicy+Rice&family=Tapestry&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -38,8 +40,8 @@ $fotoExiste = !empty($foto) && is_file(__DIR__ . "/" . $foto);
             </form>
 
             <ul class="list">
-                        <li><a href="#Home">Home</a></li>
-                        <li><a href="#Promoções">Promoções</a></li>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#Promoções">Promoções</a></li>
                         <li><a href="cardápio.html">Cardápio</a></li>
                         <li><a href="carrinho.html">Carrinho</a></li>
                         <li><a href="sair.php">Sair da conta</a></li>
