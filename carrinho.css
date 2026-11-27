@@ -35,7 +35,7 @@ body {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding: 30px 0;
+    padding: 0px 0;
 }
 
 .nav > a {
@@ -46,7 +46,7 @@ body {
 .nav img {
     display: block;
     width: 300px;
-    padding-left: 50px;
+    padding-left:50px;
 }
 
 .nav form {
@@ -94,7 +94,6 @@ body {
     display: flex;
     align-items: center;
     list-style: none;
-    padding: 0 40px;
     font-size: 20px;
 }
 

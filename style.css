@@ -55,7 +55,7 @@ form button:hover{
 .buscar {
     padding: 12px;
     border: 2px solid #8B0000;
-    border-radius: 20px;
+    border-radius: 50px;
     outline: none;
 }
 
@@ -74,7 +74,6 @@ form button:hover{
     display: flex;
     align-items: center;
     list-style: none;
-    padding: 60px;
     font-size: 20px;
     color: #ffffff;
 }
